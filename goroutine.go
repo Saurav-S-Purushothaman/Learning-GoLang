@@ -4,7 +4,7 @@ package main
 
 import (
 	"fmt"
-
+    "time"
 )
 
 func f(from string) {
@@ -20,9 +20,11 @@ func main() {
 	// synchronously.
 	f("direct")
 
+    time.Sleep(time.Second)
 	// To invoke this function in a goroutine, use
 	// `go f(s)`. This new goroutine will execute
 	// concurrently with the calling one.
+
 	go f("goroutine")
 
 	// You can also start a goroutine for an anonymous
@@ -34,8 +36,7 @@ func main() {
 	// Our two function calls are running asynchronously in
 	// separate goroutines now. Wait for them to finish
 	// (for a more robust approach, use a [WaitGroup](waitgroups)).
-	// time.Sleep(time.Second)
-
+	
 	fmt.Println("done")
 }
 
